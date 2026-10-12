@@ -14,7 +14,7 @@
 | Loại sản phẩm | Màn hình bán hàng (máy quét mã vạch) + web quản lý |
 | Ý tưởng gốc | 2.3 · POS cửa hàng bán lẻ / tạp hóa / mini mart (`ZDOCS/02-KE-HOACH/DANH-SACH-Y-TUONG.md`) |
 | Người phụ trách | |
-| Trạng thái | Mới tạo từ khuôn mẫu |
+| Trạng thái | Có tài liệu nghiệp vụ (SRS, use case, kịch bản demo, kịch bản kiểm thử), chưa code |
 
 ## 2. Vấn đề của khách hàng
 
@@ -44,12 +44,17 @@
 | Area | Chức năng | Màn hình (route FE dự kiến) | Ưu tiên |
 | :--- | :--- | :--- | :---: |
 | `System` | Đăng nhập, tài khoản, vai trò, cài đặt | Có sẵn | — |
+| `Pos` | Tổng quan trong ngày | `/dashboard` | P1 |
 | `Pos` | Bán hàng quét mã vạch | `/pos` | P1 |
+| `Pos` | Thanh toán, in hóa đơn | `/pos` (hộp thoại), `/pos/receipt/[id]` | P1 |
+| `Pos` | Tra cứu, in lại hóa đơn | `/orders` | P2 |
 | `Pos` | Đổi trả | `/returns` | P1 |
 | `Pos` | Ca làm, báo cáo ca | `/shifts` | P1 |
+| `Pos` | Mở ca, chốt ca tại quầy | `/shifts/current` | P1 |
 | `Inventory` | Hàng hóa, đơn vị tính, giá | `/products` | P1 |
 | `Inventory` | Tồn kho, cảnh báo | `/stock` | P2 |
 | `Inventory` | Nhập hàng | `/goods-receipts` | P2 |
+| `Inventory` | Lập, xem phiếu nhập | `/goods-receipts/[id]` | P2 |
 | `Pos` | Báo cáo doanh thu, lợi nhuận | `/reports` | P2 |
 | `Crm` | Khách thân thiết | `/customers` | P3 |
 
