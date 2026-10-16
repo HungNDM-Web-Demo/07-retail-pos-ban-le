@@ -1,9 +1,300 @@
 {
-  "$comment": "Phần riêng của dự án, ghép thêm vào system.json khi seed (FE mock và BE SystemSeeder). permissions: quyền nghiệp vụ; roles: vai trò riêng (vd CASHIER); roleGrants: quyền cấp thêm cho vai trò có sẵn; users: tài khoản demo thêm, trùng username thì ghi đè các trường khai báo; roles trùng code thì ghi đè tên, mô tả; settings: ghi đè giá trị cài đặt nền theo khóa; homeAfterLogin: trang mở sau khi đăng nhập (chỉ FE).",
-  "permissions": [],
-  "roles": [],
-  "roleGrants": {},
-  "users": [],
-  "settings": [],
+  "$comment": "Phần riêng của dự án, ghép thêm vào system.json khi seed (FE mock và BE SystemSeeder). permissions: quyền nghiệp vụ (docs/07-DANH-SACH-API.md §1, khớp 02-SRS §7, mã ghép create/update/delete tách thành từng mã); roles: MANAGER đổi tên thành Chủ cửa hàng, thêm CASHIER; roleGrants: quyền cấp thêm cho MANAGER; users: admin, quanly ghi đè mô tả thẻ Đăng nhập nhanh, thêm thungan (có thẻ) và thungan2 (thu ngân thứ hai trong dữ liệu mẫu, không có thẻ), bỏ nhanvien; settings: Brand.*, Store.* (thông tin cửa hàng in trên hóa đơn, QR chuyển khoản), Pos.* (cài đặt bán hàng SRS §2.4; docs/06 §3); homeAfterLogin: trang mặc định, FE chọn lại theo quyền nên Thu ngân vào thẳng Bán hàng (docs/07 §4.1).",
+  "permissions": [
+    {
+      "code": "products.view",
+      "groupName": "Hàng hóa",
+      "name": "Xem hàng hóa, giá bán",
+      "sortOrder": 200
+    },
+    {
+      "code": "products.create",
+      "groupName": "Hàng hóa",
+      "name": "Thêm nhóm hàng, mặt hàng, đơn vị quy đổi",
+      "sortOrder": 201
+    },
+    {
+      "code": "products.update",
+      "groupName": "Hàng hóa",
+      "name": "Sửa, ẩn nhóm hàng, sửa mặt hàng, giá, in tem",
+      "sortOrder": 202
+    },
+    {
+      "code": "products.delete",
+      "groupName": "Hàng hóa",
+      "name": "Xóa mặt hàng chưa có chứng từ",
+      "sortOrder": 203
+    },
+    {
+      "code": "products.view-cost",
+      "groupName": "Hàng hóa",
+      "name": "Xem giá vốn, biên lãi",
+      "sortOrder": 204
+    },
+    {
+      "code": "orders.create",
+      "groupName": "Bán hàng",
+      "name": "Bán hàng, thanh toán",
+      "sortOrder": 210
+    },
+    {
+      "code": "orders.view",
+      "groupName": "Bán hàng",
+      "name": "Tra cứu hóa đơn (thu ngân chỉ thấy hóa đơn trong ca của mình)",
+      "sortOrder": 211
+    },
+    {
+      "code": "orders.discount",
+      "groupName": "Bán hàng",
+      "name": "Giảm giá trong hạn mức",
+      "sortOrder": 212
+    },
+    {
+      "code": "orders.discount-override",
+      "groupName": "Bán hàng",
+      "name": "Xác nhận giảm vượt hạn mức, bán dưới giá vốn",
+      "sortOrder": 213
+    },
+    {
+      "code": "orders.reprint",
+      "groupName": "Bán hàng",
+      "name": "In lại hóa đơn, phiếu đổi trả",
+      "sortOrder": 214
+    },
+    {
+      "code": "returns.create",
+      "groupName": "Đổi trả",
+      "name": "Lập phiếu đổi trả",
+      "sortOrder": 220
+    },
+    {
+      "code": "returns.view",
+      "groupName": "Đổi trả",
+      "name": "Xem phiếu đổi trả (thu ngân chỉ thấy phiếu trong ca của mình)",
+      "sortOrder": 221
+    },
+    {
+      "code": "returns.override",
+      "groupName": "Đổi trả",
+      "name": "Xác nhận trả hàng quá 7 ngày hoặc hoàn trên 500.000 ₫",
+      "sortOrder": 222
+    },
+    {
+      "code": "shifts.operate",
+      "groupName": "Ca làm",
+      "name": "Mở ca, chốt ca của mình",
+      "sortOrder": 230
+    },
+    {
+      "code": "shifts.view",
+      "groupName": "Ca làm",
+      "name": "Xem mọi ca, mọi hóa đơn và phiếu đổi trả",
+      "sortOrder": 231
+    },
+    {
+      "code": "shifts.review",
+      "groupName": "Ca làm",
+      "name": "Ghi chú xử lý ca cần kiểm tra",
+      "sortOrder": 232
+    },
+    {
+      "code": "stock-levels.view",
+      "groupName": "Tồn kho",
+      "name": "Xem tồn kho, hạn sử dụng, lịch sử biến động",
+      "sortOrder": 240
+    },
+    {
+      "code": "stock-adjustments.create",
+      "groupName": "Tồn kho",
+      "name": "Lập phiếu điều chỉnh tồn",
+      "sortOrder": 241
+    },
+    {
+      "code": "suppliers.view",
+      "groupName": "Nhập hàng",
+      "name": "Xem nhà cung cấp",
+      "sortOrder": 250
+    },
+    {
+      "code": "suppliers.create",
+      "groupName": "Nhập hàng",
+      "name": "Thêm nhà cung cấp",
+      "sortOrder": 251
+    },
+    {
+      "code": "suppliers.update",
+      "groupName": "Nhập hàng",
+      "name": "Sửa nhà cung cấp",
+      "sortOrder": 252
+    },
+    {
+      "code": "goods-receipts.view",
+      "groupName": "Nhập hàng",
+      "name": "Xem phiếu nhập",
+      "sortOrder": 253
+    },
+    {
+      "code": "goods-receipts.create",
+      "groupName": "Nhập hàng",
+      "name": "Lập phiếu nhập nháp",
+      "sortOrder": 254
+    },
+    {
+      "code": "goods-receipts.update",
+      "groupName": "Nhập hàng",
+      "name": "Sửa phiếu nhập nháp",
+      "sortOrder": 255
+    },
+    {
+      "code": "goods-receipts.delete",
+      "groupName": "Nhập hàng",
+      "name": "Xóa phiếu nhập nháp",
+      "sortOrder": 256
+    },
+    {
+      "code": "goods-receipts.confirm",
+      "groupName": "Nhập hàng",
+      "name": "Xác nhận nhập kho",
+      "sortOrder": 257
+    },
+    {
+      "code": "reports.view",
+      "groupName": "Báo cáo",
+      "name": "Xem tổng quan, báo cáo doanh thu, lợi nhuận",
+      "sortOrder": 260
+    },
+    {
+      "code": "customers.view",
+      "groupName": "Khách hàng",
+      "name": "Tra cứu khách thân thiết",
+      "sortOrder": 270
+    },
+    {
+      "code": "customers.create",
+      "groupName": "Khách hàng",
+      "name": "Thêm nhanh khách",
+      "sortOrder": 271
+    }
+  ],
+  "roles": [
+    {
+      "code": "MANAGER",
+      "name": "Chủ cửa hàng",
+      "description": "Hàng hóa, giá, nhập hàng, tồn kho, kiểm tra ca, tổng quan, báo cáo lợi nhuận; xác nhận giảm giá và đổi trả vượt quyền thu ngân"
+    },
+    {
+      "code": "CASHIER",
+      "name": "Thu ngân",
+      "description": "Mở ca, bán hàng bằng máy quét, thanh toán, đổi trả, chốt ca; chỉ thấy hóa đơn trong ca của mình, không thấy giá vốn",
+      "isSystem": true,
+      "permissions": [
+        "products.view",
+        "orders.create",
+        "orders.view",
+        "orders.discount",
+        "orders.reprint",
+        "returns.create",
+        "returns.view",
+        "shifts.operate",
+        "customers.view",
+        "customers.create"
+      ]
+    }
+  ],
+  "roleGrants": {
+    "MANAGER": [
+      "products.view",
+      "products.create",
+      "products.update",
+      "products.delete",
+      "products.view-cost",
+      "orders.create",
+      "orders.view",
+      "orders.discount",
+      "orders.discount-override",
+      "orders.reprint",
+      "returns.create",
+      "returns.view",
+      "returns.override",
+      "shifts.operate",
+      "shifts.view",
+      "shifts.review",
+      "stock-levels.view",
+      "stock-adjustments.create",
+      "suppliers.view",
+      "suppliers.create",
+      "suppliers.update",
+      "goods-receipts.view",
+      "goods-receipts.create",
+      "goods-receipts.update",
+      "goods-receipts.delete",
+      "goods-receipts.confirm",
+      "reports.view",
+      "customers.view",
+      "customers.create"
+    ]
+  },
+  "users": [
+    {
+      "username": "admin",
+      "description": "Phân quyền, tài khoản, thương hiệu, thông tin cửa hàng, khổ in, bán âm kho"
+    },
+    {
+      "username": "quanly",
+      "description": "Chủ cửa hàng: tổng quan lãi gộp, hàng hóa và giá, nhập hàng, tồn kho, kiểm tra ca, báo cáo, xác nhận giảm giá"
+    },
+    {
+      "username": "thungan",
+      "fullName": "Lê Thị Thu Hằng",
+      "email": "thungan@example.com",
+      "phone": "0123456784",
+      "roles": ["CASHIER"],
+      "isDemoAccount": true,
+      "quickLogin": true,
+      "sortOrder": 3,
+      "description": "Mở ca, quét mã vạch tính tiền, hóa đơn chờ, đổi trả, chốt ca"
+    },
+    {
+      "username": "thungan2",
+      "fullName": "Nguyễn Văn Phúc",
+      "email": "thungan2@example.com",
+      "phone": "0123456785",
+      "roles": ["CASHIER"],
+      "isDemoAccount": true,
+      "quickLogin": false,
+      "sortOrder": 4,
+      "description": "Thu ngân thứ hai trong dữ liệu mẫu (đang đứng quầy 1 hôm nay), để báo cáo theo thu ngân có hai người"
+    },
+    { "username": "nhanvien", "enabled": false }
+  ],
+  "settings": [
+    { "key": "Brand.AppName", "value": "POS Cửa hàng Bán lẻ", "groupName": "Thương hiệu" },
+    { "key": "Brand.LogoUrl", "value": "/logo/logo-mark.svg", "groupName": "Thương hiệu" },
+    { "key": "Brand.PrimaryColor", "value": "#0369A1", "groupName": "Thương hiệu" },
+    { "key": "Store.Name", "value": "Bình An Mart", "groupName": "Cửa hàng" },
+    {
+      "key": "Store.Address",
+      "value": "57 Phan Đăng Lưu, Hải Châu, Đà Nẵng",
+      "groupName": "Cửa hàng"
+    },
+    { "key": "Store.Phone", "value": "0236 3 868 686", "groupName": "Cửa hàng" },
+    { "key": "Store.TaxCode", "value": "0402468135", "groupName": "Cửa hàng" },
+    {
+      "key": "Store.ReceiptFooter",
+      "value": "Cảm ơn quý khách, hẹn gặp lại!",
+      "groupName": "Cửa hàng"
+    },
+    { "key": "Store.BankBin", "value": "970418", "groupName": "Cửa hàng" },
+    { "key": "Store.BankAccount", "value": "0000000000", "groupName": "Cửa hàng" },
+    { "key": "Store.BankAccountName", "value": "BINH AN MART", "groupName": "Cửa hàng" },
+    { "key": "Pos.ReceiptPaperSize", "value": "80", "groupName": "Bán hàng" },
+    { "key": "Pos.AllowNegativeStock", "value": "true", "groupName": "Bán hàng" },
+    { "key": "Pos.DefaultOpeningCash", "value": "500000", "groupName": "Bán hàng" },
+    {
+      "key": "Pos.ReturnPolicy",
+      "value": "Đổi trả trong 7 ngày kèm hóa đơn, hàng còn nguyên tem nhãn",
+      "groupName": "Bán hàng"
+    }
+  ],
   "homeAfterLogin": "/dashboard"
 }

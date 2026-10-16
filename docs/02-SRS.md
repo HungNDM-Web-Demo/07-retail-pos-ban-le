@@ -25,7 +25,7 @@ Tài liệu mô tả đầy đủ yêu cầu của bản demo POS Cửa hàng B�
 
 | Thuật ngữ | Giải thích |
 | :--- | :--- |
-| Mặt hàng | Sản phẩm cửa hàng bán, vd "Bia Tiger lon 330ml"; mỗi mặt hàng có một mã hàng |
+| Mặt hàng | Sản phẩm cửa hàng bán, vd "Bia lager lon 330ml"; mỗi mặt hàng có một mã hàng |
 | Đơn vị cơ bản | Đơn vị nhỏ nhất bán được, dùng để tính tồn và giá vốn, vd Lon |
 | Đơn vị quy đổi | Đơn vị lớn hơn của cùng mặt hàng, có mã vạch và giá bán riêng, vd Lốc 6, Thùng 24 |
 | Hệ số quy đổi | Số đơn vị cơ bản trong một đơn vị quy đổi; Thùng 24 có hệ số 24 |
@@ -76,7 +76,7 @@ Tạp hóa, mini mart, cửa hàng tiện lợi có 300–3.000 mặt hàng, 1�
 | `MANAGER` | Chủ cửa hàng | Desktop, điện thoại | Hàng hóa, giá, nhập hàng, tồn kho, kiểm tra ca, xem lãi lỗ, xác nhận giảm giá và đổi trả vượt quyền |
 | `CASHIER` | Thu ngân | Máy bán hàng có máy quét | Tính tiền nhanh và đúng, đổi trả cho khách, chốt ca không lệch |
 
-Tài khoản demo: `admin`, `quanly`, `thungan`. Vai trò `STAFF` của phần nền không dùng trong dự án này.
+Tài khoản demo: `admin`, `quanly`, `thungan` (có nút Đăng nhập nhanh) và `thungan2` (thu ngân thứ hai trong dữ liệu mẫu). Vai trò `STAFF` và tài khoản `nhanvien` của phần nền không dùng trong dự án này.
 
 ### 2.3. Quy trình nghiệp vụ
 

@@ -13,8 +13,9 @@
 | Ngành / loại khách hàng | Tạp hóa, mini mart, cửa hàng tiện lợi |
 | Loại sản phẩm | Màn hình bán hàng (máy quét mã vạch) + web quản lý |
 | Ý tưởng gốc | 2.3 · POS cửa hàng bán lẻ / tạp hóa / mini mart (`ZDOCS/02-KE-HOACH/DANH-SACH-Y-TUONG.md`) |
-| Người phụ trách | |
-| Trạng thái | Có tài liệu nghiệp vụ (SRS, use case, kịch bản demo, kịch bản kiểm thử), chưa code |
+| Người phụ trách | Mạnh Hùng (Pum) |
+| Trạng thái | Đã code BE + FE, chạy được cả hai chế độ (dữ liệu mẫu và BE thật trên Postgres) |
+| Cửa hàng mẫu | Bình An Mart (hư cấu), một cửa hàng, hai quầy; demo online `https://pum-pos-ban-le.vercel.app` (dữ liệu mẫu) |
 
 ## 2. Vấn đề của khách hàng
 

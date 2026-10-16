@@ -187,7 +187,7 @@ flowchart LR
 
 **Luồng thay thế**
 
-- 2a. Hàng không có mã hoặc mã bị mờ: thu ngân bấm F2, gõ tên không dấu (vd "hao hao"), chọn dòng gợi ý đúng đơn vị.
+- 2a. Hàng không có mã hoặc mã bị mờ: thu ngân bấm F2, gõ tên không dấu (vd "tom chua cay"), chọn dòng gợi ý đúng đơn vị.
 - 4a. Sửa số lượng: bấm vào ô số lượng của dòng, nhập số mới.
 - 4b. Đổi đơn vị: chọn đơn vị khác trong danh sách của dòng; số lượng giữ nguyên, giá theo đơn vị mới (BR-06).
 - 4c. Xóa dòng: bấm biểu tượng xóa hoặc phím Delete trên dòng đang chọn.
@@ -385,7 +385,7 @@ sequenceDiagram
 
 1. Thu ngân bấm "Chốt ca".
 2. Hệ thống hiển thị tổng hợp: giờ mở, số hóa đơn, doanh thu theo tiền mặt, chuyển khoản, thẻ; số phiếu đổi trả, tiền hoàn theo phương thức; tiền đầu ca; tiền mặt lý thuyết (BR-21).
-3. Thu ngân đếm tiền trong két, nhập số tờ theo từng mệnh giá (500.000 ₫ tới 1.000 ₫); hệ thống tự cộng ra tiền mặt thực đếm.
+3. Thu ngân đếm tiền trong két, nhập số tờ theo từng mệnh giá (500.000 ₫ tới 500 ₫); hệ thống tự cộng ra tiền mặt thực đếm.
 4. Hệ thống tính chênh lệch (BR-22), hiển thị màu xanh nếu không quá 20.000 ₫, màu đỏ nếu quá.
 5. Thu ngân nhập ghi chú nếu có, bấm "Xác nhận chốt ca".
 6. Hệ thống lưu ca, mở bản in báo cáo ca khổ 80 mm, đưa màn bán hàng về trạng thái chưa mở ca.

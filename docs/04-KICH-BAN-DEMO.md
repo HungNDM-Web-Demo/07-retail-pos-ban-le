@@ -10,12 +10,12 @@
 - [ ] Đặt lại dữ liệu demo (thanh công cụ demo → Đặt lại dữ liệu) để có số liệu 90 ngày tính tới hôm nay
 - [ ] Đổi tên cửa hàng, logo, màu theo thương hiệu khách (Cài đặt → Thương hiệu) nếu đã biết
 - [ ] Để trình duyệt ở 1366×768 cho giống màn hình máy tính tiền; nếu có máy quét USB thì cắm sẵn và thử quét vào ô Ghi chú của Notepad
-- [ ] In sẵn hoặc mở trên điện thoại tờ mã vạch mẫu: lon, lốc, thùng Bia Tiger; gói, thùng Mì Hảo Hảo; hộp, lốc Sữa tươi Vinamilk (giá trị lấy ở `05-KICH-BAN-KIEM-THU.md` §1)
+- [ ] Không có máy quét thì dùng bảng "Mã vạch mẫu" trên màn Bán hàng (bấm mã để giả lập quét) hoặc nút "Quét mã ngẫu nhiên" trên thanh công cụ demo; có máy quét thì in sẵn tờ mã vạch mẫu: lon, lốc, thùng Bia lager; gói, thùng Mì gói tôm chua cay; hộp, lốc Sữa tươi tiệt trùng (giá trị lấy ở `05-KICH-BAN-KIEM-THU.md` §1)
 - [ ] Ghi nhớ hóa đơn mẫu B (mua hôm qua, có 2 lốc sữa) để demo đổi trả
 
 | Link | Ghi chú |
 | :--- | :--- |
-| FE | `http://localhost:3107` hoặc link online |
+| FE | Bản online (dữ liệu mẫu, không cần BE): `https://pum-pos-ban-le.vercel.app`; chạy máy: `http://localhost:3107` |
 | Swagger | `https://localhost:7107/swagger` (khi khách hỏi về tích hợp) |
 
 | Tài khoản | Vai trò | Dùng để cho xem |
@@ -36,15 +36,15 @@ Mật khẩu: giá trị `DEMO_PASSWORD` trong `.env`, hoặc bấm "Đăng nh�
 | :---: | :--- | :--- | :--- |
 | 1 | Chủ cửa hàng | Đăng nhập, mở Tổng quan | Mở máy là thấy doanh thu và **lãi gộp** hôm nay, so với hôm qua; biết ngay mấy mặt hàng sắp hết, mấy lô sữa sắp hết hạn |
 | 2 | Thu ngân | Đổi vai trò sang Thu ngân trên thanh công cụ demo; vào Bán hàng, hệ thống bắt mở ca, nhập tiền đầu ca 500.000 ₫ | Chưa mở ca thì không bán được; cuối ca mới đối soát được két |
-| 3 | Thu ngân | Quét mã lon Bia Tiger, rồi mã lốc, rồi mã thùng: ra 3 dòng 18.000 ₫, 105.000 ₫, 410.000 ₫. Gõ `12*` rồi quét gói mì Hảo Hảo | Mỗi đơn vị một mã, một giá; không phải nhớ giá hàng nghìn món; khách mua 12 gói không phải quét 12 lần |
+| 3 | Thu ngân | Quét mã lon Bia lager, rồi mã lốc, rồi mã thùng: ra 3 dòng 18.000 ₫, 105.000 ₫, 410.000 ₫. Gõ `12*` rồi quét gói mì tôm chua cay | Mỗi đơn vị một mã, một giá; không phải nhớ giá hàng nghìn món; khách mua 12 gói không phải quét 12 lần |
 | 4 | Thu ngân | Khách quen xin bớt 30.000 ₫ trên hóa đơn 587.000 ₫: vượt 5%, hệ thống mở hộp xác nhận; chủ cửa hàng gõ tài khoản `quanly` ngay trên máy | Thu ngân không tự bớt quá tay; mọi khoản giảm vượt mức đều có tên người duyệt |
 | 5 | Thu ngân | Khách quay lại lấy thêm đồ: bấm F6 mở hóa đơn chờ, tính cho khách sau 1 hộp sữa bột; khách xin bớt 4% thì hệ thống chặn vì thấp hơn giá vốn; thu ngân gỡ giảm, thu bằng QR, quay lại tab cũ | Giờ tan tầm không bắt cả hàng người chờ một khách; không bao giờ bán lỗ mà chủ không biết |
 | 6 | Thu ngân | F9 thanh toán tab cũ: tổng 557.000 ₫, hệ thống gợi ý 560.000 ₫, 600.000 ₫, 1.000.000 ₫; bấm 600.000 ₫, tiền thối 43.000 ₫; in bill có mã vạch | Tiền thối tự tính, gợi ý đúng tờ khách hay đưa; bill có mã vạch để đổi trả sau này |
 | 7 | Thu ngân | Khách mang bill hôm qua đến đổi 1 lốc sữa lấy 1 lốc bia: quét mã trên bill, chọn dòng trả, quét hàng đổi, thu thêm 74.000 ₫ | Đổi trả 30 giây, hoàn đúng số khách đã trả (kể cả khi hóa đơn có giảm giá); tồn kho tự cộng lại |
 | 8 | Thu ngân | Chốt ca: nhập số tờ theo mệnh giá, cố tình thiếu 23.500 ₫ | Hệ thống tự tính tiền phải có trong két, tính cả tiền thu thêm khi đổi hàng; lệch quá 20.000 ₫ tự gắn cờ đỏ |
 | 9 | Chủ cửa hàng | Đổi sang Chủ cửa hàng, mở Danh sách ca, xem ca vừa chốt, ghi chú xử lý | Không cần đứng quầy vẫn biết ca nào lệch, ai giảm giá, ai đổi trả |
-| 10 | Chủ cửa hàng | Mở Tồn kho: Bia Tiger còn 13 lon, hiện "2 lốc 1 lon", trạng thái Sắp hết; tab Sắp hết hạn có lô sữa tươi còn 20 ngày; một lô sữa chua đã hết hạn thì bấm "Hủy lô" | Đọc tồn theo thùng, lốc như ngoài kho; biết lô nào sắp hết hạn để bán đẩy, lô nào phải hủy và hủy mất bao nhiêu tiền |
-| 11 | Chủ cửa hàng | Nhập hàng: quét mã thùng mì, nhập 5 thùng giá mới 114.000 ₫; xác nhận; giá vốn tự lên 3.725 ₫/gói; hệ thống báo nước suối lãi dưới 5%, sửa giá ngay | Giá vốn bình quân tự tính, nhà cung cấp tăng giá là biết ngay mặt hàng nào đang lãi mỏng |
+| 10 | Chủ cửa hàng | Mở Tồn kho: Bia lager còn 13 lon, hiện "2 lốc 1 lon", trạng thái Sắp hết; tab Sắp hết hạn có lô sữa tươi còn 20 ngày; một lô sữa chua đã hết hạn thì bấm "Hủy lô" | Đọc tồn theo thùng, lốc như ngoài kho; biết lô nào sắp hết hạn để bán đẩy, lô nào phải hủy và hủy mất bao nhiêu tiền |
+| 11 | Chủ cửa hàng | Nhập hàng: quét mã thùng mì, nhập 5 thùng giá mới 114.000 ₫; quét mã thùng nước suối, nhập 10 thùng giá 117.600 ₫; xác nhận; giá vốn mì tự lên 3.732 ₫/gói (còn 78 gói sau bước 3); hệ thống báo nước suối lãi 4,5%, sửa giá chai thành 5.500 ₫ ngay | Giá vốn bình quân tự tính, nhà cung cấp tăng giá là biết ngay mặt hàng nào đang lãi mỏng |
 | 12 | Chủ cửa hàng | Mở Báo cáo: lợi nhuận gộp 30 ngày, lợi nhuận theo nhóm hàng, hàng lỗi do đổi trả | Biết nhóm nào thật sự có lãi, không chỉ nhìn doanh thu; bỏ bớt hàng bán chạy mà lãi thấp |
 
 > Nếu khách hỏi phân quyền: đổi sang Quản trị viên, bỏ quyền "Xem giá vốn" của một vai trò rồi đổi vai trò để thấy cột giá vốn biến mất.

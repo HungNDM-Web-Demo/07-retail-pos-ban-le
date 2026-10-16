@@ -26,8 +26,56 @@ export const permissions = {
   auditLogs: {
     view: 'audit-logs.view',
   },
-  // Quyền nghiệp vụ của dự án thêm bên dưới, vd:
-  // menuItems: { view: 'menu-items.view', create: 'menu-items.create', ... },
+  // Quyền nghiệp vụ (docs/07-DANH-SACH-API.md §1, project.json → permissions)
+  products: {
+    view: 'products.view',
+    create: 'products.create',
+    update: 'products.update',
+    delete: 'products.delete',
+    viewCost: 'products.view-cost',
+  },
+  orders: {
+    create: 'orders.create',
+    view: 'orders.view',
+    discount: 'orders.discount',
+    discountOverride: 'orders.discount-override',
+    reprint: 'orders.reprint',
+  },
+  returns: {
+    create: 'returns.create',
+    view: 'returns.view',
+    override: 'returns.override',
+  },
+  shifts: {
+    operate: 'shifts.operate',
+    view: 'shifts.view',
+    review: 'shifts.review',
+  },
+  stockLevels: {
+    view: 'stock-levels.view',
+  },
+  stockAdjustments: {
+    create: 'stock-adjustments.create',
+  },
+  suppliers: {
+    view: 'suppliers.view',
+    create: 'suppliers.create',
+    update: 'suppliers.update',
+  },
+  goodsReceipts: {
+    view: 'goods-receipts.view',
+    create: 'goods-receipts.create',
+    update: 'goods-receipts.update',
+    delete: 'goods-receipts.delete',
+    confirm: 'goods-receipts.confirm',
+  },
+  reports: {
+    view: 'reports.view',
+  },
+  customers: {
+    view: 'customers.view',
+    create: 'customers.create',
+  },
 } as const
 
 /** Mã vai trò hệ thống (BR-SYS-06). */
@@ -35,6 +83,7 @@ export const roleCodes = {
   admin: 'ADMIN',
   manager: 'MANAGER',
   staff: 'STAFF',
+  cashier: 'CASHIER',
 } as const
 
 type Leaves<T> = T extends string ? T : { [K in keyof T]: Leaves<T[K]> }[keyof T]

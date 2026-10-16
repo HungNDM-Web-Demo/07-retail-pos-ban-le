@@ -165,7 +165,7 @@ public class SystemSeedDataTests
         var admin = data.Roles.Single(r => r.Code == RoleCodes.Admin);
         Assert.Equal(data.Permissions.Select(p => p.Code), admin.Permissions);
         Assert.All(data.Roles.Where(r => r.Code is RoleCodes.Admin or RoleCodes.Manager or RoleCodes.Staff), r => Assert.True(r.IsSystem));
-        Assert.Equal(["admin", "quanly", "nhanvien"], data.QuickLoginUsers.Select(u => u.Username));
+        Assert.Equal(["admin", "quanly", "thungan"], data.QuickLoginUsers.Select(u => u.Username));
         Assert.All(data.QuickLoginUsers, u => Assert.False(string.IsNullOrWhiteSpace(u.Description)));
     }
 

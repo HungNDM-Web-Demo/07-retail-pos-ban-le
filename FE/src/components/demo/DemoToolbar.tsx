@@ -7,6 +7,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { Separator } from '@/components/ui/separator'
 import { appConfig } from '@/config/app.config'
 import { useDemoEnvironment } from '@/features/demo/hooks/use-demo'
+import { ScannerDemoSection } from '@/features/pos/components/ScannerDemoSection'
 import { ResetDataButton, ResetDataDialog } from './ResetDataButton'
 import { RoleSwitcher } from './RoleSwitcher'
 import { ThemePicker } from './ThemePicker'
@@ -77,6 +78,11 @@ function DemoToolbarPanel() {
           <Separator />
           <Section title="Giao diện">
             <ThemePicker />
+          </Section>
+          <Separator />
+          {/* Dự án POS bán lẻ (07 §4.2 mục 3): giả lập máy quét cho người xem không có máy quét */}
+          <Section title="Máy quét giả lập">
+            <ScannerDemoSection onDone={() => setOpen(false)} />
           </Section>
           <Separator />
           <Section title="Dữ liệu">
